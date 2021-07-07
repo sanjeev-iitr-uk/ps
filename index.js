@@ -122,24 +122,24 @@ app.use((err, req, res) => {
   });
 });
 const httpServer = Http.createServer(app);
-// mongoose
-//   .connect(databaseURI, { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(() => {
-//     httpServer.listen(port, () => {
-//       console.log(`REST API running on ${serverURL}`);
-//       console.log(`GraphQL API running on ${graphqlURL}`);
-//       console.log(`Dashboard running on ${dbDashboard}`);
-//     });
-//   })
-//   .catch(() => {
-//     console.log('error in connecting with db..');
-//   });
-  httpServer.listen(port, () => {
-    console.log(`REST API running on ${serverURL}`);
-    console.log(`GraphQL API running on ${graphqlURL}`);
-    console.log(`Dashboard running on ${dbDashboard}`);
-    ParseServer.createLiveQueryServer(httpServer);
+mongoose
+  .connect(databaseURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    httpServer.listen(port, () => {
+      console.log(`REST API running on ${serverURL}`);
+      console.log(`GraphQL API running on ${graphqlURL}`);
+      console.log(`Dashboard running on ${dbDashboard}`);
+    });
+  })
+  .catch(() => {
+    console.log('error in connecting with db..');
   });
+  // httpServer.listen(port, () => {
+  //   console.log(`REST API running on ${serverURL}`);
+  //   console.log(`GraphQL API running on ${graphqlURL}`);
+  //   console.log(`Dashboard running on ${dbDashboard}`);
+  //   ParseServer.createLiveQueryServer(httpServer);
+  // });
 
 // This will enable the Live Query real-time server
 
