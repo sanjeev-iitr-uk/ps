@@ -1,0 +1,71 @@
+{
+  "name": "affiliate_engine",
+  "version": "1.4.0",
+  "description": "affiliate engine server",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "~4.11.x",
+    "kerberos": "~0.0.x",
+    "mongoose": "^5.11.9",
+    "morgan": "^1.10.0",
+    "node-schedule": "^1.3.2",
+    "parse": "~1.8.0",
+    "parse-dashboard": "^2.1.0",
+    "parse-server": "*",
+    "parse-server-sendgrid-adapter": "^1.0.0",
+    "xlsx": "^0.17.0"
+  },
+  "scripts": {
+    "build": "webpack -p --config webpack.config.js",
+    "debug": "nodemon --inspect index.js",
+    "dev": "nodemon --config nodemon.json index.js",
+    "prod": "pm2 start server.js -i max --name affiliate_engine --watch --log pm2logs.txt",
+    "lint": "eslint --debug cloud/",
+    "lint:write": "eslint --debug cloud/ --fix",
+    "prettier": "prettier --config .prettierrc.json --write cloud/"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(js)": [
+      "npm run lint:write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=4.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^8.2.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-jest-enzyme": "^6.0.2",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.18.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.9.1",
+    "husky": "^1.1.2",
+    "lint-staged": "^7.3.0",
+    "prettier": "^2.2.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.1.2",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
